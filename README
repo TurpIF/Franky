@@ -1,0 +1,13 @@
+Pour compiler le programme, il suffit de compiler main.pas avec fpc2.6.0.
+Le programme n'est pas compatible avec fpc2.4.4 car il utilise un design pattern singleton qui nécessite des éléments statiques dans la classe.
+Les éléments statiques ne sont pas totalement supporté dans l'ancienne version.
+
+Pour executer le programme, il suffit de lancer dans un terminal l'executable suivit de chemin vers un fichier source en francky.
+Exemple : ./main calculatrice.frk
+
+Il y a en tout 4 fichiers d'exemples fournis :
+	code.frk : fichier de test et d'exemple d'utilisation basique du langage
+	plusOuMoins.frk : contient un jeu où il faut trouver un nombre donné au début avec comme indication 'C'est plus' ou 'C'est moins'
+	pendu.frk : contient le jeu du pendu. On rentre d'abord le mot à chercher avec le nombre de tentative max et le nombre de secondes maximum, puis on essaye ensuite de trouver ce mot.
+	calculatrice.frk : contient une calculatrice en notation polonaise inverse. Elle n'effectue pas d'analyse et pour simplifier le code, elle ne comprend que les nombres à un seul chiffre.
+

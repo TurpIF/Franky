@@ -1,0 +1,65 @@
+in = function(char, string) {
+	i = 0
+	while i < len(string) {
+		if char == string at i
+			return True
+		
+		i = i + 1
+	}
+	
+	return False
+}
+
+replace = function(old, new, string) {
+	i = 0
+	s = ''
+	while i < len(string) {
+		if old == string at i
+			s = s + new
+		else
+			s = s + string at i
+		
+		i = i + 1
+	}
+	
+	return s
+}
+
+posStr = function(char, string, from) {
+	i = from
+	while i < len(string) {
+		if char == string at i
+			return i
+		
+		i = i + 1
+	}
+	
+	return -1
+}
+
+subStr = function(string, from, to) {
+	s = ''
+	i = from
+	while i < to {
+		s = s + string at i
+		i = i + 1
+	}
+	return s
+}
+
+parse = function(code) {
+	if in(code at 0, '+-*/') {
+		left = parse(subStr(code, 1, len(code)))
+		right = parse(subStr(code, 1 + len(left), len(code)))
+	}
+	
+	if code at 0 == '+'	return float(left) + float(right)
+	if code at 0 == '-'	return float(left) - float(right)
+	if code at 0 == '*'	return float(left) * float(right)
+	if code at 0 == '/'	return float(left) / float(right)
+	
+	return code at 0
+}
+
+print parse(replace(' ', '', input))
+

@@ -1,0 +1,31 @@
+clearScreen = function() {
+	i = 0
+	while i < 100 {
+		print ''
+		i = i + 1
+	}
+}
+
+print 'Exemple Francky : Plus ou Moins'
+
+print 'Entrez le nombre mystère'
+nbrMystere = int(input)
+nbrEntre = nbrMystere + 1
+nbrCoup = 0
+
+clearScreen()
+
+while nbrEntre != nbrMystere {
+	print 'Entrez un nombre : '
+	nbrEntre = int(input)
+	
+	if nbrEntre > nbrMystere
+		print 'C est moins'
+	if nbrEntre < nbrMystere
+		print 'C est plus'
+	
+	nbrCoup = nbrCoup + 1
+}
+
+print 'Bravo !! Tu as gagné en ' + str(nbrCoup) + ' coups'
+

@@ -1,0 +1,91 @@
+clearScreen = function() {
+	i = 0
+	while i < 100 {
+		print ''
+		i = i + 1
+	}
+}
+
+in = function(char, string) {
+	i = 0
+	while i < len(string) - 1 {
+		if char == string at i
+			return True
+		
+		i = i + 1
+	}
+	
+	return False
+}
+
+replace = function(old, new, string) {
+	i = 0
+	s = ''
+	while i < len(string) {
+		if old == string at i
+			s = s + new
+		else
+			s = s + string at i
+		
+		i = i + 1
+	}
+	
+	return s
+}
+
+posStr = function(char, string, from) {
+	i = from
+	while i < len(string) {
+		if char == string at i
+			return i
+		
+		i = i + 1
+	}
+	
+	return -1
+}
+
+subStr = function(string, from, to) {
+	s = ''
+	i = from
+	while i < to {
+		s = s + string at i
+		i = i + 1
+	}
+	return s
+}
+
+print 'Exemple Francky : Pendu'
+
+print 'Entrez le mot à trouver : '
+mot = input
+
+print 'Entrez le nombre de coups max :'
+nbrCoup = int(input)
+
+print 'Entrez le nombre de seconde maximum :'
+nbrSec = int(input)
+begin = time
+
+motTrouve = '*' * len(mot)
+
+clearScreen()
+
+while nbrCoup > 0 and motTrouve != mot and time - begin < nbrSec {
+	print 'Il vous reste ' + str(nbrCoup) + ' coups.'
+	print 'Il vous reste ' + str(int(nbrSec - time - begin)) + ' secondes.'
+	print 'Vous avez trouvé : ' + motTrouve
+	print 'Proposez une lettre : '
+	lettre = input at 0
+	
+	pos = posStr(lettre, mot, 0)
+	
+	if pos == -1
+		nbrCoup = nbrCoup - 1
+	
+	while pos != -1 {
+		motTrouve = subStr(motTrouve, 0, pos) + lettre + subStr(motTrouve, pos + 1, len(motTrouve))
+		pos = posStr(lettre, mot, pos + 1)
+	}
+}
+
